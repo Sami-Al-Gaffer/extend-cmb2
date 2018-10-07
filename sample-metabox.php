@@ -292,3 +292,26 @@ function yourprefix_frontend_form_photo_upload( $post_id, $attachment_post_data 
 	// Upload the file and send back the attachment post ID
 	return media_handle_upload( 'submitted_post_thumbnail', $post_id, $attachment_post_data );
 }
+
+
+
+function name_ajax_search() {
+	$results = new WP_Query( array(
+		'post_type'     => array( 'review', 'page' ),
+		'post_status'   => 'publish',
+		'nopaging'      => true,
+		'posts_per_page'=> 100,
+		's'             => stripslashes( $_POST['sami_text'] ),
+	) );
+	$items = array();
+	if ( !empty( $results->posts ) ) {
+    // $company_name='';
+    // $company_name = [];
+    foreach ( $results->posts as $result ) {
+			$items[] = $result->post_title;
+		}
+	}
+	wp_send_json_success( array_unique($items) );
+}
+add_action( 'wp_ajax_search_site',        'name_ajax_search' );
+add_action( 'wp_ajax_nopriv_search_site', 'name_ajax_search' );
