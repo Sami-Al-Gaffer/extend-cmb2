@@ -102,7 +102,7 @@ function yourprefix_frontend_form_register() {
 
 	// Regular text field
 	$cmb->add_field( array(
-		'name'       => __( 'Test Text', 'cmb2' ),
+		'name'       => __( 'Company Name', 'cmb2' ),
 		'desc'       => __( 'field description (optional)', 'cmb2' ),
 		'id'         => 'sami_text',
 		'type'       => 'text',
@@ -125,7 +125,7 @@ function yourprefix_frontend_form_register() {
 
 	// Email text field
 	$cmb->add_field( array(
-		'name' => __( 'Test Text Email', 'cmb2' ),
+		'name' => __( 'Company Email', 'cmb2' ),
 		'desc' => __( 'field description (optional)', 'cmb2' ),
 		'id'   => $prefix . 'email',
 		'type' => 'text_email',
